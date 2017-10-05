@@ -1,40 +1,38 @@
 <!doctype html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script src="../../index.js"></script>
-  <script>
-      /**
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://rawgit.com/tianyuan168326/nono_plugin_sdk/master/dist/index.js"></script>
+    <script>
+        /**
        * 渲染器初始化完成后，调用 pluginReady通知NONo笔记插件已就绪
        * 
        * */
-    NONoPluginSDK.pluginReady();
-      /**
-       *只有这些代码和NONo有关！
-       *对于笔记渲染器，你只需要注册一个方法 renderNoteData 来渲染,仅此而已！
-       *Pretty easy,hum?
-       * 
-       * */
-    NONoPluginSDK.inject({
-    renderNoteData:function(note){
-        $("#note_title").html(note.note_title);
-        $("#note_content").html(note.note_content);
-    }
-    })
-  </script>
+        NONoPluginSDK.pluginReady();
+        /**
+         *只有这些代码和NONo有关！
+         *对于笔记渲染器，你只需要注册一个方法 renderNoteData 来渲染,仅此而已！
+         *Pretty easy,hum?
+         * 
+         * */
+        NONoPluginSDK.inject({
+            renderNoteData: function (note) {
+                $("#note_title").html(note.note_title);
+                $("#note_content").html(note.note_content);
+            }
+        })
+    </script>
 </head>
 
 <body>
-    <div id="article" class="rich_media">
-            <div class="rich_media_primary">
-                <h3 class="rich_media_title" id="note_title"/>
-                <div class="rich_media_content" id="note_content"/>
-            </div>
-    </div>
+    <h3 id="note_title" />
+    <hr/>
+    <div id="note_content" />
 </body>
-  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <link href="./index.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
 </html>
