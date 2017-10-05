@@ -143,22 +143,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         //setTimeout(this.setEditorReady ,5000);
       }
     }, {
-      key: 'setEditorReady',
+      key: 'pluginReady',
 
       /**
       *When this function is called ,parent remove the "loading mask" upon the editor instantly
       * if the function is not called,parent will remove the "loading mask" after 5s
       */
-      value: function setEditorReady() {
-        console.log("setEditorReady");
-        if (!this.isEditorReadySet) {
-          console.log("in child", " noteEditorReady sent");
+      value: function pluginReady() {
+        console.log("nono plugin ready");
+        if (!this.isPluginReady) {
+          console.log("in child", "nono plugin readyt");
           window.parent.postMessage({
-            type: "noteEditorReady",
+            type: "pluginReady",
             data: "miaowuwuuw",
             uuid: uuidv4()
           }, "*");
-          this.isEditorReadySet = true;
+          this.isPluginReady = true;
         }
       }
     }, {
@@ -174,7 +174,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return NONoPluginSDK;
   }();
 
-  NONoPluginSDK.isEditorReadySet = false;
+  NONoPluginSDK.isPluginReady = false;
   NONoPluginSDK.qiniuToken_inner = null;
 
   var ActionHandler = function () {

@@ -144,22 +144,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         //setTimeout(this.setEditorReady ,5000);
       }
     }, {
-      key: 'setEditorReady',
+      key: 'pluginReady',
 
       /**
       *When this function is called ,parent remove the "loading mask" upon the editor instantly
       * if the function is not called,parent will remove the "loading mask" after 5s
       */
-      value: function setEditorReady() {
-        console.log("setEditorReady");
-        if (!this.isEditorReadySet) {
-          console.log("in child", " noteEditorReady sent");
+      value: function pluginReady() {
+        console.log("nono plugin ready");
+        if (!this.isPluginReady) {
+          console.log("in child", "nono plugin ready");
           window.parent.postMessage({
-            type: "noteEditorReady",
+            type: "pluginReady",
             data: "miaowuwuuw",
             uuid: uuidv4()
           }, "*");
-          this.isEditorReadySet = true;
+          this.isPluginReady = true;
         }
       }
     }, {
@@ -175,7 +175,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return NONoPluginSDK;
   }();
 
-  NONoPluginSDK.isEditorReadySet = false;
+  NONoPluginSDK.isPluginReady = false;
   NONoPluginSDK.qiniuToken_inner = null;
 
   var ActionHandler = function () {
@@ -238,22 +238,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   return NONoPluginSDK;
 });</script>
   <script>
+      /**
+       * 渲染器初始化完成后，调用 pluginReady通知NONo笔记插件已就绪
+       * 
+       * */
+    NONoPluginSDK.pluginReady();
+      /**
+       *只有这些代码和NONo有关！
+       *对于笔记渲染器，你只需要注册一个方法 renderNoteData 来渲染,仅此而已！
+       *Pretty easy,hum?
+       * 
+       * */
     NONoPluginSDK.inject({
-    renderNoteData:({note_title,note_content,note_abstract})=>{
-        $("#note_title").html(note_title);
-        $("#note_content").html(note_content);
+    renderNoteData:function(note){
+        $("#note_title").html(note.note_title);
+        $("#note_content").html(note.note_content);
     }
-})
+    })
   </script>
 </head>
 
 <body>
     <div id="article" class="rich_media">
-                <div class="rich_media_primary">
-                    <h3 class="rich_media_title" id="note_title">
-                    </h3>
-                <div class="rich_media_content" id="note_content">
-                </div>
+            <div class="rich_media_primary">
+                <h3 class="rich_media_title" id="note_title"/>
+                <div class="rich_media_content" id="note_content"/>
             </div>
     </div>
 </body>
@@ -350,21 +359,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     line-height: 1;
     border-radius: 2px;
     margin: 10px 10px;
-  }
-  .min_bg_shadow{
-    background: #FAFAFA;
-    width: 40px;
-    height: 20px;
-  }
-  .middle_bg_shadow{
-    background: #FAFAFA;
-    width: 300px;
-    height: 40px;
-  }
-  .max_bg_shadow{
-    background: #FAFAFA;
-    width: 700px;
-    height: 400px;
   }
   .rich_media_primary hr{
     margin: 20px 20px 20px 20px;
