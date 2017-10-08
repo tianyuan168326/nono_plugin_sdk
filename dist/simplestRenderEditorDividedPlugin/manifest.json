@@ -1,0 +1,9 @@
+{
+    "type":"single_note_render_editor_divided_plugin",
+    "files":{
+        "render":"render.html",
+        "editor":"editor.html"
+    },
+    "author":"nonobiji",
+    "version":"0.0.1"
+}

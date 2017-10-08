@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\dist",
-    "\\dist\\simplestNONoNotePlugin"
+    ""
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\dist",
   "PreviewInSolutionExplorer": false
 }

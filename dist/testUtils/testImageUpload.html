@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="http://o8r5rbkhb.bkt.clouddn.com/nono_plugin_sdk/0.0.2/index.js"></script>
+    <!-- <script src="../index.js"></script> -->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            document
+                .getElementById('fileinput')
+                .addEventListener('change', (evt) => {
+                    console.log("upload file");
+                    //Retrieve the first (and only!) File from the FileList object
+                    var f = evt.target.files[0];
+                    NONoPluginSDK.Utils.uploadFile(f)
+                        .then(data => {
+                            $("#hint").html(`上传文件成功`)
+                            $("#file_url").attr("href",data.fileUrl)
+                            $("#file_url").text(data.fileUrl)
+                        })
+                        .catch(err => {
+                            $("#hint").text("上传文件失败："+err.message)
+                        })
+                }, false);
+            NONoPluginSDK.InteractBridge.pluginReady();
+        })
+    </script>
+</head>
+
+<body>
+    <h2>图片上传工具测试</h2>
+    <label for="fileinput" class="btn btn-primary btn-block btn-outlined">加载本地插件文件(zip)</label>
+    <input type="file" id="fileinput" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" />
+    <p id="hint"></p><a id="file_url"></a>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script src="http://o8r5rbkhb.bkt.clouddn.com/nono_plugin_sdk/0.0.2/index.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+  <script>
+    $(function () {
+      /**
+ *只有这些代码和NONo有关！
+ *对于笔记编辑器，你需要注册两个方法；
+ *getNoteData方法 return 你的编辑器数据
+ * setNoteData方法 设置你的编辑器
+ * */
+      NONoPluginSDK.InteractBridge.inject({
+        getNoteData: function () {
+          return {
+            note_title: "待办事项",
+            note_content:
+            JSON.stringify([
+              $('#todocheck1').is(':checked')
+              , $('#todocheck2').is(':checked')
+            ]),
+            note_abstract: "待办事项"
+          }
+        },
+        setNoteData: function (note) {
+          var checkedStateArray = JSON.parse(note.note_content)
+          $('#todocheck1').prop("checked", checkedStateArray[0])
+          $('#todocheck2').prop("checked", checkedStateArray[1])
+        }
+      })
+      /**
+        * 编辑器初始化完成后，调用 pluginReady通知NONo笔记插件已就绪
+        * 
+        * */
+      NONoPluginSDK.InteractBridge.pluginReady()
+      /**
+           * 合适的时机请求NONo笔记同步内容到云端
+           * 在此例中为待办事项状态变更时
+           * */
+      $("#todocheck1").change(function () {
+        NONoPluginSDK.InteractBridge.saveNote();
+      })
+      $("#todocheck2").change(function () {
+        NONoPluginSDK.InteractBridge.saveNote();
+      })
+    })
+  </script>
+</head>
+
+<body>
+  <h2>最简单的编辑渲染一体插件</h2>
+  <hr/>
+  <input id="todocheck1" type="checkbox">
+  <label for="todocheck1">第一条待办事项</label>
+  <input id="todocheck2" type="checkbox">
+  <label for="todocheck2">第二条待办事项</label>
+
+</body>
+
+</html>
