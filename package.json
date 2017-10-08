@@ -1,12 +1,11 @@
 {
   "name": "nono-plugin-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "SDK for building NONo plugin(render editor etc...)",
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
-    "compile": "babel -d dist/ src/ ",
-    "prepublish": "npm run compile",
+    "prepublish": "npm run build",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.config.js",
     "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules --config webpack.config.js"
   },
