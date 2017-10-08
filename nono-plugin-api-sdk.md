@@ -24,6 +24,7 @@ Action列表
     分离插件之editor | 分离插件之render | 一体插件
     ---- | --- | ---
     可注入 | 不可注入 | 可注入
+    
     对应的Handler function为`()->{note_title,note_content,note_abstract}`
 
 * setNoteData
@@ -33,6 +34,7 @@ Action列表
     分离插件之editor | 分离插件之render | 一体插件
     ---- | --- | ---
     可注入 | 不可注入 | 不可注入
+
     对应的Handler function为`({note_title,note_content,note_abstract})->null`
 
 * renderNoteData
@@ -42,6 +44,7 @@ Action列表
     分离插件之editor | 分离插件之render | 一体插件
     ---- | --- | ---
     不可注入 | 可注入 | 可注入
+
     对应的Handler function为`({note_title,note_content,note_abstract})->null`
     
 * onFullScreenModeChanged
@@ -51,12 +54,14 @@ Action列表
     分离插件之editor | 分离插件之render | 一体插件
     ---- | --- | ---
     可注入 | 可注入 | 可注入
+
     对应的Handler function为`(bool)->null`
 ## `static saveNote()`
 通知NONo笔记主进程对笔记进行保存。
 分离插件之editor | 分离插件之render | 一体插件
     ---- | --- | ---
     不可调用 | 可调用 | 可调用
+
 一体插件可以在需要保存笔记内容的时机调用此函数。
 
 ## `static pluginReady()`
@@ -64,6 +69,7 @@ Action列表
 分离插件之editor | 分离插件之render | 一体插件
     ---- | --- | ---
     一定要调用 | 一定要调用 | 一定要调用
+    
 插件一切准备就绪后（`建议在调用过InteractBridge.inject之后`），调用一次此函数。
 
 # Utils

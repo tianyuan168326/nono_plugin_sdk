@@ -14,6 +14,12 @@
 >`npm install nono-plugin-sdk`
 
 # 测试例子
+>测试账号与密码 
+```
+username: test@nonobiji.com
+
+password: 52ziji
+```
 ## [最简单的渲染/编辑插件](./dist/simplestRenderEditorDividedPlugin)
 cd到[./dist/simplestRenderEditorDividedPlugin](./dist/simplestRenderEditorDividedPlugin)
 
