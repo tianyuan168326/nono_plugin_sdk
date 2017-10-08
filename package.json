@@ -1,6 +1,6 @@
 {
   "name": "nono-plugin-sdk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "SDK for building NONo plugin(render editor etc...)",
   "main": "src/index.js",
   "scripts": {
